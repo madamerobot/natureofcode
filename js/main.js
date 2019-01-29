@@ -1,12 +1,25 @@
+let mover
+
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    let canvas = document.getElementById('canvas')
+    let height = canvas.getBoundingClientRect().height
+    let width = canvas.getBoundingClientRect().width
+    const p5canvas = createCanvas(width, height)
+    p5canvas.parent('canvas')
+    background(66,244,217)
+
+    mover = new Mover ()
 }
+
+// function windowResized() {
+//     let canvas = document.getElementById('canvas')
+//     let height = canvas.getBoundingClientRect().height
+//     let width = canvas.getBoundingClientRect().width
+//     resizeCanvas(width, height)
+// }
 
 function draw() {
-    background(255);
-    text("put your p5.js code here",10, frameCount % height);
-}
-
-function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
+    mover.update()
+    mover.checkEdges()
+    mover.display()
 }
