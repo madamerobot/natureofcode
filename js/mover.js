@@ -2,8 +2,8 @@ class Mover {
 
   constructor() {
       this.location = createVector(width/2, height/2)
-      this.velocity = createVector()
-      this.acceleration = createVector(-0.001, 0.01)
+      this.velocity = createVector(0.1, 0.2)
+      this.acceleration = createVector(0.05, 0.01)
       this.topspeed = 10
   }
   
@@ -21,10 +21,10 @@ class Mover {
 
   checkEdges() {
       if ((this.location.x > width) || (this.location.x < 0)) {
-          this.velocity = this.velocity * -1
+          this.velocity.x = this.velocity.x * -1
       }
       if ((this.location.y > height) || (this.location.y < 0)) {
-          this.velocity = this.velocity + -1
+          this.velocity.y = this.velocity.y * -1
       }
   }
 }
