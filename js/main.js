@@ -1,4 +1,5 @@
 let mover
+let balls = []
 
 function setup() {
     let canvas = document.getElementById('canvas')
@@ -6,9 +7,10 @@ function setup() {
     let width = canvas.getBoundingClientRect().width
     const p5canvas = createCanvas(width, height)
     p5canvas.parent('canvas')
-    background(66,244,217)
 
-    mover = new Mover ()
+    for (var i = 0; i < 1000; i++) {
+        balls.push(new Mover(i * 0.3, i * 0.3))
+    }
 }
 
 // function windowResized() {
@@ -19,7 +21,30 @@ function setup() {
 // }
 
 function draw() {
-    mover.update()
-    mover.checkEdges()
-    mover.display()
+    background(75, 66, 244)
+
+    balls.forEach(function(ball) {
+        ball.update()
+        ball.checkEdges()
+        ball.display()
+    })
+
 }
+
+window.addEventListener('load', function() {
+    var body = document.getElementById('canvas')
+    let clicked = false
+    canvas.addEventListener('click', function() {
+        if (!clicked) {
+            balls.forEach(function(ball) {
+                ball.stop()
+            })
+            clicked = true
+        } else {
+            balls.forEach(function(ball) {
+                ball.reset()
+            })
+            clicked = false
+        }
+    })
+})

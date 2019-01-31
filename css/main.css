@@ -1,3 +1,9 @@
+* {
+    background: #4b42f4;
+    margin: 0;
+    padding: 0;
+}
+
 .center-wrapper {
     width: 100%;
     height: 100vh;
@@ -5,7 +11,7 @@
 
 .center-frame {
     height: 100vh;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
 }
 
